@@ -1,16 +1,15 @@
-export class Expense {
-    private id: number;
-    private name: string;
-    private amount: number;
-    
+export class Expense {   
 
-	constructor($id: number, $name: string, $amount: number) {
-		this.id = $id;
-		this.name = $name;
-		this.amount = $amount;
-	}
     
+	constructor(public id: any, public name: any, public amount: any) {}
+
     public toString(){
         return `Expense(id: ${this.id}, name: ${this.name}, amount: ${this.amount})`;
     }
+    
+    public static fromJsonObject(jsonObject: Expense){
+        return new Expense(jsonObject.id, jsonObject.name, jsonObject.amount);
+    }
+
+   
 }

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ExpenseTrackingModule } from './expense-tracking/expense-tracking.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { ExpenseTrackingModule } from './expense-tracking/expense-tracking.modul
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ExpenseTrackingModule
+    ExpenseTrackingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

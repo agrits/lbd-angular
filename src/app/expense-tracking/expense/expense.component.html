@@ -1,7 +1,14 @@
+<div *ngIf="selected" class="container">
+<p>Selected: {{selected}}</p>
+<label for="expenseName">Change the expense name:</label>
+<input type="text" id="expenseName" [(ngModel)]="selected.name" name="expenseName"> 
+</div>
 <div class="container ">
-    <ol>
-        <li *ngFor="let expense of expenses">
-            <a href="#">{{expense}}</a>
-        </li>
+    <ol class="list-group">
+        <a href="#" *ngFor="let expense of expenses; let i = index" (click)="selected = expense">
+            <li class="list-group-item row">
+                {{expense.toString()}}
+            </li>
+        </a>
     </ol>
 </div>

@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Expense } from './expense';
-
+import {ExpenseService} from './expense.service'
 @Component({
   selector: 'app-expense',
   templateUrl: './expense.component.html',
   styleUrls: ['./expense.component.css']
 })
 export class ExpenseComponent implements OnInit {
-  expenses: Expense[] = [];
-
-  constructor() { }
+  expenses: Expense[] = [new Expense(1, "avc", 2)];
+  public selected: Expense;
+  constructor(private expenseService: ExpenseService) { }
 
   ngOnInit(){
-    // this.expenses = [new Expense(0, "First", 100),
-    //                           new Expense(1, "Second", 300),
-    //                           new Expense(2, "Third", 200)];
-    this.expenses.push(new Expense(0, "First", 100));
-    this.expenses.push(new Expense(1, "Second", 200));
-    this.expenses.push(new Expense(2, "Third", 300));
+    this.expenseService.getAll().subscribe(expenses => this.initExpenses(expenses))
   }
+
+  initExpenses(expenses: Expense[]): void{
+    console.log(expenses)
+    this.expenses = expenses.map(expense => Expense.fromJsonObject(expense))
+  }
+
 }
